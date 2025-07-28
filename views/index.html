@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delicious Bites</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slider {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .overlay {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: none;
+      background: #ff5722;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #e64a19;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #fff;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: #ff5722;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Welcome to Delicious Bites</h1>
+      <p>Enjoy mouth-watering dishes delivered fresh to your door</p>
+      <div class="buttons">
+        <a href="/signup" class="btn">Sign Up</a>
+        <a href="/login" class="btn btn-outline">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.querySelector('.slider');
+
+    // Food image slideshow URLs (you can change or add your own)
+    const images = [
+     "food1.webp",
+     "food2.webp",
+     "cake.jpg",
+     "cafe.jpeg",
+     "sweets.webp",
+     "street_food.jpeg",
+     "fastfood.webp"
+     
+    ];
+
+    let index = 0;
+
+    function changeBackground() {
+      slider.style.backgroundImage = `url('${images[index]}')`;
+      index = (index + 1) % images.length;
+    }
+
+    changeBackground(); // Show first image
+    setInterval(changeBackground, 4000); // Change every 4 seconds
+  </script>
+</body>
+</html>
